@@ -10,7 +10,7 @@ public class A1Novice {
 
 		// Your code follows here.
 		
-		//Take in the total ammount of customers
+		//Take in the total amount of customers
 		int totNumCust = scan.nextInt();
 		
 		//Arrays to hold the value of the last and first
@@ -52,7 +52,8 @@ public class A1Novice {
 			
 			//total price stored in an array
 			totalPrice[i] = total;
-			System.out.println(firstLetter[i] + ". " + cmrLastName[i] + ": " + totalPrice[i] );
+			System.out.println(firstLetter[i] + ". " + cmrLastName[i] + ": "
+			+ String.format("%.2f", totalPrice[i]));
 		
 		}
 
