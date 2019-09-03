@@ -43,7 +43,7 @@ public class A1Example {
 		
 		// Print results
 		
-		System.out.println("Min:" + min);
+		System.out.println("Min: " + min);
 		System.out.println("Max: " + max);
 		System.out.println("Average: " + String.format("%.2f", ((double) sum) / ((double) count)));
 		
