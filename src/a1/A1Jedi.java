@@ -50,7 +50,7 @@ public class A1Jedi {
 				 if (counnt[y] == 0) {
 					 System.out.println("No customers bought " + itemNme[y]);
 				 }else {
-					 System.out.println(counnt[y] + " " + "Customers bought " + iquanity[y] + " " + itemNme[y]);
+					 System.out.println(counnt[y] + " " + "customers bought " + iquanity[y] + " " + itemNme[y]);
 				 }
 			 }
 				 }

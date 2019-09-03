@@ -44,8 +44,8 @@ public class A1Adept {
 		int biggest = bigSpender(total);
 		double average = caculateAverage(total);
 
-		System.out.println("Biggest: " + fName[biggest] + " " + fName[biggest] + " (" + String.format("%.2f", (total[biggest])) + ")"); 
-		System.out.println("Smallest: " + fName[smallest] + " " + fName[smallest] + " " + "(" + String.format("%.2f", (total[smallest])) + ")");
+		System.out.println("Biggest: " + fName[biggest] + " " + lName[biggest] + " (" + String.format("%.2f", (total[biggest])) + ")"); 
+		System.out.println("Smallest: " + fName[smallest] + " " + lName[smallest] + " " + "(" + String.format("%.2f", (total[smallest])) + ")");
 		System.out.println("Average: " + String.format("%.2f", (average))); 
 
 	}
