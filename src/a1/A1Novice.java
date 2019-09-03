@@ -1,48 +1,47 @@
-
 package a1;
 
 import java.util.Scanner;
 
-public class A1Novice {
+public class A1Novice{
 
 	public static void main(String[] args) {
-
+		@SuppressWarnings("resource")
 		Scanner scan = new Scanner(System.in);
-		int itemCount = scan.nextInt();
-		double[] prices = new double[itemCount];
-		String[] itemNme = new String[itemCount];
 
-		for (int i = 0; i < itemCount; i++) {
-			itemNme[i] = scan.next();
-			prices[i] = scan.nextDouble();
-		}
+		int totalCustomersNum = scan.nextInt();
+		String[] cmrLastName = new String[totalCustomersNum];
+		char[] firstLetter = new char[totalCustomersNum];
+		double[] totalPrice = new double[totalCustomersNum];
 
-		int Ccounter = 0;
-		Ccounter = scan.nextInt();
-		String[] fName = new String[Ccounter];
-		String[] lName = new String[Ccounter];
-		double[] total = new double[Ccounter];
+		for (int n = 0; n < totalCustomersNum; n++) {
 
-		for (int i = 0; i < Ccounter; i++) {
+			String firstName = scan.next();
+			char firstLetter1 = firstName.charAt(0);
+			firstLetter[n] = firstLetter1;
 
-			fName[i] = scan.next();
-			lName[i] = scan.next();
-			int numBought = scan.nextInt();
-			int[] numCount = new int[numBought];
-			String[] foodNames  = new String[numBought];
+			String lastName = scan.next();
+			cmrLastName[n] = lastName;
 
-			for (int j = 0; j < numBought; j++) {	
-				numCount[j] = scan.nextInt();
-				foodNames[j] = scan.next();
+			int num = scan.nextInt();
+
+			double total = 0.0;
+
+			for (int i = 0; i < num; i++) {
+				int quantity = scan.nextInt();
+				@SuppressWarnings("unused")
+				String name = scan.next();
+				double price = scan.nextDouble();
+				total = (total + quantity * price) ;
+				//total = total / 100;
 
 			}
+			//String formatPrice = String.format("%.2f", totalPrice[n]);
+			
+			totalPrice[n] = total;
+			System.out.println(firstLetter[n] + ". " + cmrLastName[n] + ": " + String.format("%.2f", totalPrice[n]));
 
-		System.out.println(fName + " " + lName + " (" + String.format("%.2f", (total)) + ")"); 
-		System.out.println("Smallest: " + fName[smallest] + " " + fName[smallest] + " (" + String.format("%.2f", (total[smallest])) + ")");
-		System.out.println("Average: " + String.format("%.2f", (average))); 
-
+		}
 	}
-
-	
-
 }
+
+
