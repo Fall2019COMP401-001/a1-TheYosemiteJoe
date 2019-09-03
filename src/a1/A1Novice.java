@@ -1,3 +1,4 @@
+
 package a1;
 
 import java.util.Scanner;
@@ -7,60 +8,41 @@ public class A1Novice {
 	public static void main(String[] args) {
 
 		Scanner scan = new Scanner(System.in);
+		int itemCount = scan.nextInt();
+		double[] prices = new double[itemCount];
+		String[] itemNme = new String[itemCount];
 
-		// Your code follows here.
-		
-		//Take in the total amount of customers
-		int totNumCust = scan.nextInt();
-		
-		//Arrays to hold the value of the last and first
-		//names and price of each customers items
-		String[] cmrLastName = new String[totNumCust];
-		char[] firstLetter = new char[totNumCust];
-		double[] totalPrice = new double[totNumCust];
-
-		//for loop to scan for the first letter and last name and
-		//store them in arrays
-		for (int i =0; i < totNumCust; i++) {
-
-			String fName = scan.next();
-			char fLetter = fName.charAt(0);
-			firstLetter[i] = fLetter;
-			
-			String lName = scan.next();
-			cmrLastName[i] = lName;
-			
-			//scaned for the number of items bought
-			int numItemBought = scan.nextInt();
-
-			double total = 0.0;
-			
-			for (int j = 0; j < numItemBought; j++) {
-
-				//Quanity of each item bought
-				//Item name is scanned
-				//price of each item 
-				int intQuan = scan.nextInt();
-				String itemName = scan.next();
-				double itemPrice = scan.nextDouble();
-				
-				//total = total / 100;
-				total = (total + intQuan * itemPrice) ;
-				
-				
-			}
-			
-			//total price stored in an array
-			totalPrice[i] = total;
-			System.out.println(firstLetter[i] + ". " + cmrLastName[i] + ": "
-			+ String.format("%.2f", totalPrice[i]));
-		
+		for (int i = 0; i < itemCount; i++) {
+			itemNme[i] = scan.next();
+			prices[i] = scan.nextDouble();
 		}
+
+		int Ccounter = 0;
+		Ccounter = scan.nextInt();
+		String[] fName = new String[Ccounter];
+		String[] lName = new String[Ccounter];
+		double[] total = new double[Ccounter];
+
+		for (int i = 0; i < Ccounter; i++) {
+
+			fName[i] = scan.next();
+			lName[i] = scan.next();
+			int numBought = scan.nextInt();
+			int[] numCount = new int[numBought];
+			String[] foodNames  = new String[numBought];
+
+			for (int j = 0; j < numBought; j++) {	
+				numCount[j] = scan.nextInt();
+				foodNames[j] = scan.next();
+
+			}
+
+		System.out.println(fName + " " + lName + " (" + String.format("%.2f", (total)) + ")"); 
+		System.out.println("Smallest: " + fName[smallest] + " " + fName[smallest] + " (" + String.format("%.2f", (total[smallest])) + ")");
+		System.out.println("Average: " + String.format("%.2f", (average))); 
 
 	}
 
-}
+	
 
-//String[] fName = new String [totNumCust];
-	//	String[] lName = new String [totNumCust];
-	//	int[] numItemBought = new int [totNumCust];
+}

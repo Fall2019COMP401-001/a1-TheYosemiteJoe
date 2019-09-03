@@ -5,77 +5,144 @@ import java.util.Scanner;
 public class A1Adept {
 
 	public static void main(String[] args) {
+
 		Scanner scan = new Scanner(System.in);
-		
 		int itemCount = scan.nextInt();
-		
-		double[] PArray = new double[itemCount];
+		double[] prices = new double[itemCount];
 		String[] itemNme = new String[itemCount];
-		
+
 		for (int i = 0; i < itemCount; i++) {
 			itemNme[i] = scan.next();
-			PArray[i] = scan.nextDouble();
+			prices[i] = scan.nextDouble();
 		}
-		
-		int Ccounter = scan.nextInt();
-		String[] nAMES = new String[Ccounter];
-		double[] iiTotals = new double[Ccounter];
-		
+
+		int Ccounter = 0;
+		Ccounter = scan.nextInt();
+		String[] fName = new String[Ccounter];
+		String[] lName = new String[Ccounter];
+		double[] total = new double[Ccounter];
+
 		for (int i = 0; i < Ccounter; i++) {
-			
-			nAMES[i] = scan.next() + " " + scan.next();
-			int distinctItems = scan.nextInt();
-			iiTotals[i] = 0;
-			
-			for (int j = 0; j < distinctItems; j++) {
-				
-				int iiAmount = scan.nextInt();
-				String name = scan.next();
-				int index = 0;
-				
-				while (!itemNme[index].equals(name)) {
-					index++;
-				}
-				iiTotals[i] += iiAmount * PArray[index];
+
+			fName[i] = scan.next();
+			lName[i] = scan.next();
+			int numBought = scan.nextInt();
+			int[] numCount = new int[numBought];
+			String[] foodNames  = new String[numBought];
+
+			for (int j = 0; j < numBought; j++) {	
+				numCount[j] = scan.nextInt();
+				foodNames[j] = scan.next();
+
 			}
+
+			total[i] = caculateTotal(itemNme, prices, numCount, foodNames);
+
 		}
-		
-		double thheBiggest = 0;
-		
-		for (int i = 0; i < iiTotals.length; i++) {
-			if (iiTotals[i] > thheBiggest) {
-				thheBiggest = iiTotals[i];
-			}
-		}
-		
-		int iiNDEX = 0;
-		
-		while (iiTotals[iiNDEX] != thheBiggest) {
-			iiNDEX++;
-		}
-		
-		int biggestIndex = iiNDEX;
-		iiNDEX = 0;
-		double theSmmalest = thheBiggest;
+
+		int smallest = smallSpender(total);
+		int biggest = bigSpender(total);
+		double average = caculateAverage(total);
+
+		System.out.println("Biggest: " + fName[biggest] + " " + fName[biggest] + " (" + String.format("%.2f", (total[biggest])) + ")"); 
+		System.out.println("Smallest: " + fName[smallest] + " " + fName[smallest] + " (" + String.format("%.2f", (total[smallest])) + ")");
+		System.out.println("Average: " + String.format("%.2f", (average))); 
+
+	}
+
+	private static double caculateAverage(double[] total) {
+		double average = 0;
 		double sum = 0;
 		
-		for (int i = 0; i < iiTotals.length; i++) {
-			if (iiTotals[i] < theSmmalest) {
-				theSmmalest = iiTotals[i];
+		for(int i=0; i < total.length; i++) {
+			double num = total[i];
+			sum += num;
+			
+			if (i == total.length - 1) {
+				average = sum / (total.length);
 			}
-			sum += iiTotals[i];
+		}
+		return average;
+	}
+
+	private static int bigSpender(double[] total) {
+		double up = total[0];
+		int num = 0;
+		
+		for (int i = 0; i < total.length; i++) {
+			
+			if (total[i] > up) {
+				num = i;
+				up = total[i];
+			}
+		}
+
+		return num;
+	} 
+
+	private static int smallSpender(double[] total) {
+		double low = total[0];
+		int num = 0;
+		
+		for (int i = 0; i < total.length; i++) {
+			
+			if (total[i] < low) {
+				num = i;
+				low = total[i];
+			}
+		}
+
+		return num;
+	}
+
+	private static double caculateTotal(String[] items, double[] prices, int[] numCount, String[] foodNames) { 
+		double total = 0;
+
+		for(int i = 0; i < numCount.length; i++) {
+			for(int g = 0; g < items.length; g++) {
+				if(foodNames[i].contentEquals(items[g])) {
+					double num = prices[g] * numCount[i];
+					total += num;
+				}
+			}
+
 		}
 		
-		while (iiTotals[iiNDEX] != theSmmalest) {
-			iiNDEX++;
-		}
-		
-		int smallestIndex = iiNDEX;
-		double iiAdverage = sum / iiTotals.length;
-		
-		System.out.println("Biggest: " + nAMES[biggestIndex] + " (" + String.format("%.2f", iiTotals[biggestIndex]) + ")");
-		System.out.println("Smallest: " + nAMES[smallestIndex] + " (" + String.format("%.2f",iiTotals[smallestIndex]) + ")");
-		System.out.println("Average: " + String.format("%.2f", iiAdverage));
+		return total;
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
